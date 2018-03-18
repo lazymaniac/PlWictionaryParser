@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "CasesTypeEnum",
+            "fieldValues": "NOUN_SING,NOUN_PLUR,ADJ_SING_M,ADJ_SING_F,ADJ_SING_N,ADJ_PLUR_M,ADJ_PLUR_N"
+        },
+        {
+            "fieldName": "mianownik",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dopelniacz",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "celownik",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "biernik",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "narzednik",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "miejscownik",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wolacz",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170423204734",
+    "entityTableName": "cases_var",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "isPerfective",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isReflexivVerb",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "topic",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "conjugation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "reflexivPronoun",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "perfective",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imperfective",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "infinitive",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "impersonalFromPast",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adverbialParticipleContemporary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adverbialParticiplePrior",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gerund",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170423204736",
+    "entityTableName": "verb_var",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

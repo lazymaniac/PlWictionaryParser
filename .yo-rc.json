@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.mindmap.jane",
+      "nativeLanguage": "pl"
+    },
+    "jhipsterVersion": "4.14.0",
+    "baseName": "Parser",
+    "packageName": "com.mindmap.jane",
+    "packageFolder": "com/mindmap/jane",
+    "serverPort": "8083",
+    "authenticationType": "jwt",
+    "hibernateCache": "no",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": "kafka",
+    "serviceDiscoveryType": "consul",
+    "buildTool": "gradle",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "817ade861a177c328d13310a11b8f384dd20c6f8",
+    "enableTranslation": true,
+    "applicationType": "microservice",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "skipClient": true,
+    "skipUserManagement": true,
+    "nativeLanguage": "pl",
+    "languages": [
+      "pl",
+      "en"
+    ],
+    "clientPackageManager": "yarn",
+    "cacheProvider": "no",
+    "enableHibernateCache": false
+  }
+}

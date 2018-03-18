@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "varType",
+            "fieldType": "PersonVarTypeEnum",
+            "fieldValues": "CZAS_TERAZ,CZAS_PRZESZ_M,CZAS_PRZESZ_F,CZAS_PRZEZ_N,CZAS_PRZYSZ_M,CZAS_PRZYSZ_F,CZAS_PRZYSZ_N,TRYB_ROZKAZ,TRYB_PRZYP_M,TRYB_PRZYP_F,TRYB_PRZYP_N,IMIES_PRZYM_CZYNNY_M,IMIES_PRZYM_CZYNNY_F,IMIES_PRZYM_CZYNNY_N,IMIES_PRZYM_BIERNY_M,IMIES_PRZYM_BIERNY_F,IMIES_PRZYM_BIERNY_N"
+        },
+        {
+            "fieldName": "per1sing",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "per2sing",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "per3sing",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "per1plur",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "per2plur",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "per3plur",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170423204737",
+    "entityTableName": "person_var",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

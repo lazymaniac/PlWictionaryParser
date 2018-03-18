@@ -1,0 +1,2 @@
+${AnsiColor.BRIGHT_BLUE}:: Jane - Parser  :: Running Spring Boot ${spring-boot.version} ::
+:: http://jane.pl ::${AnsiColor.DEFAULT}

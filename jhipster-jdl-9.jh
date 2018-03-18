@@ -1,0 +1,180 @@
+
+enum AdjectiveDegreeEnum {
+	ZERO, HIGHER, HIGHEST
+}
+
+enum CasesTypeEnum {
+	NOUN_SING, NOUN_PLUR, ADJ_SING_M, ADJ_SING_F, ADJ_SING_N, ADJ_PLUR_M, ADJ_PLUR_N
+}
+
+enum ConjugationTypeEnum {
+	I, II, III, IV, VA, VB, VC, VIA, VIB, VIIA, VIIB, VIIIA, VIIIB, IX, XA, XB, XC, XI
+}
+
+enum NounGenderEnum {
+	MESKI, MESKOOSOBOWY, MESKOZYWOTNY, MESKONIEZYWOTNY,
+    ZENSKI, NIJAKI, NIEMESKOOSOBOWY, EMPTY
+}
+
+enum NumberTypeEnum {
+	SINGULAR, PLURAL
+}
+
+enum NumeralTypeEnum {
+	CARDINAL, ORDINAL, FRACTIONAL, COLLECTIVE, MULTIPLICATIVE,
+    UNKNOWN, MULTIFARIOUS, MULTIPLE, MULTIWORD
+}
+
+enum PartOfSpeechEnum {
+	VERB, NOUN, ADJECTIVE, ADVERB, NUMERAL, PRONOUN
+}
+
+enum PersonVarTypeEnum {
+	CZAS_TERAZ,
+    CZAS_PRZESZ_M, CZAS_PRZESZ_F, CZAS_PRZEZ_N,
+    CZAS_PRZYSZ_M, CZAS_PRZYSZ_F, CZAS_PRZYSZ_N,
+    TRYB_ROZKAZ, TRYB_PRZYP_M, TRYB_PRZYP_F, TRYB_PRZYP_N,
+    IMIES_PRZYM_CZYNNY_M, IMIES_PRZYM_CZYNNY_F, IMIES_PRZYM_CZYNNY_N,
+    IMIES_PRZYM_BIERNY_M, IMIES_PRZYM_BIERNY_F, IMIES_PRZYM_BIERNY_N
+}
+
+entity WikiUnit {
+	name String,
+    topic String
+}
+
+entity PartOfSpeech {
+	link String
+}
+
+entity Importance {
+	link String
+}
+
+entity Synonym {
+	link String
+}
+
+entity Example {
+	link String
+}
+
+entity Antonym {
+	link String
+}
+
+entity Phraseology {
+	link String
+}
+
+entity Collocation {
+	link String
+}
+
+entity Cognate {
+	link String,
+    nounTypesQualifier String
+}
+
+entity AdjectiveVar {
+}
+
+entity AdjectiveDegreeVar {
+	degree AdjectiveDegreeEnum
+}
+
+entity NounVar {
+	topic String,
+    gender NounGenderEnum,
+    secondGender NounGenderEnum,
+    varietyAble Boolean,
+    noSingular Boolean,
+    noPlural Boolean
+}
+
+entity PronounVar {
+}
+
+entity CasesVar {
+	type CasesTypeEnum,
+    mianownik String,
+    dopelniacz String,
+    celownik String,
+    biernik String,
+    narzednik String,
+    miejscownik String,
+    wolacz String,
+}
+
+entity AdverbVar {
+	link String,
+	higherDegree String,
+    highestDegree String
+}
+
+entity VerbVar {
+    isPerfective Boolean,
+    isReflexivVerb Boolean,
+    topic String,
+    conjugation String,
+    reflexivPronoun String,
+    perfective String,
+    imperfective String,
+    infinitive String,
+    impersonalFromPast String,
+    adverbialParticipleContemporary String,
+    adverbialParticiplePrior String,
+    gerund String
+}
+
+entity PersonVar {
+	varType PersonVarTypeEnum,
+    per1sing String,
+    per2sing String,
+    per3sing String,
+    per1plur String,
+    per2plur String,
+    per3plur String
+}
+
+entity WnUnit {
+	name String,
+    position String,
+    domain String,
+    variant Integer
+}
+
+entity RelationType {
+	type String,
+    name String,
+    description String,
+    posstr String,
+    display String,
+    abbreviation String,
+    autorevert Boolean
+}
+
+entity Synset {
+	splited Integer,
+    isAbstract Boolean
+}
+
+entity WnUnitSynset {
+}
+
+entity SynsetRelation {
+	checked Boolean
+}
+
+entity LexicalRelation {
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+

@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "degree",
+            "fieldType": "AdjectiveDegreeEnum",
+            "fieldValues": "ZERO,HIGHER,HIGHEST"
+        }
+    ],
+    "changelogDate": "20170423204731",
+    "entityTableName": "adjective_degree_var",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "topic",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "NounGenderEnum",
+            "fieldValues": "MESKI,MESKOOSOBOWY,MESKOZYWOTNY,MESKONIEZYWOTNY,ZENSKI,NIJAKI,NIEMESKOOSOBOWY,EMPTY"
+        },
+        {
+            "fieldName": "secondGender",
+            "fieldType": "NounGenderEnum",
+            "fieldValues": "MESKI,MESKOOSOBOWY,MESKOZYWOTNY,MESKONIEZYWOTNY,ZENSKI,NIJAKI,NIEMESKOOSOBOWY,EMPTY"
+        },
+        {
+            "fieldName": "varietyAble",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "noSingular",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "noPlural",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170423204732",
+    "entityTableName": "noun_var",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}
