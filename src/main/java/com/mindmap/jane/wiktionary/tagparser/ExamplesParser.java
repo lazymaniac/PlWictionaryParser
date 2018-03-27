@@ -1,10 +1,11 @@
 package com.mindmap.jane.wiktionary.tagparser;
 
 import com.mindmap.jane.domain.Example;
+import com.mindmap.jane.domain.Numeration;
 import com.mindmap.jane.domain.Sentence;
 import com.mindmap.jane.domain.WikiUnit;
+import com.mindmap.jane.utils.NumerationUtils;
 import com.mindmap.jane.utils.SentenceParser;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
 import com.mindmap.jane.wiktionary.numeration.NumerationInterpreter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +49,7 @@ public class ExamplesParser {
             }
 
             List<Numeration> numerations = numerationInterpreter.parseReferenceNumeration(wikiUnit, getNumeration(currentLine));
-            Sentence sentence = SentenceParser.parseSentence(currentLine);
+            Sentence sentence = SentenceParser.parseSentence(NumerationUtils.removeNumerationReference(currentLine));
 
             wikiUnit.addExample(numerations, new Example(sentence));
         }

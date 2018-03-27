@@ -1,7 +1,7 @@
 package com.mindmap.jane.wiktionary;
 
 import com.codahale.metrics.annotation.Timed;
-import com.mindmap.jane.domain.RawWikiUnit;
+import com.mindmap.jane.domain.SourceWikiUnit;
 import com.mindmap.jane.wiktionary.dictionary.Dictionary;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -47,8 +47,8 @@ public class WikiCleaner {
     private void clearUselessElements(Dictionary dictionary) {
         Pattern newLinePattern = Pattern.compile("\\n");
 
-        for (RawWikiUnit rawWikiUnit : dictionary.getRawWikiUnits()) {
-            String text = rawWikiUnit.getText();
+        for (SourceWikiUnit sourceWikiUnit : dictionary.getSourceWikiUnits()) {
+            String text = sourceWikiUnit.getText();
 
             String[] lines = newLinePattern.split(text);
 
@@ -65,7 +65,7 @@ public class WikiCleaner {
                 sb.append(line).append("\n");
             }
 
-            rawWikiUnit.setText(sb.toString().trim());
+            sourceWikiUnit.setText(sb.toString().trim());
         }
     }
 
@@ -77,30 +77,30 @@ public class WikiCleaner {
     private void clearForeignLanguages(Dictionary dictionary) {
         Pattern pattern = Pattern.compile("\\n[\\n]+");
 
-        Set<RawWikiUnit> empty = new HashSet<>();
+        Set<SourceWikiUnit> empty = new HashSet<>();
 
-        for (RawWikiUnit rawWikiUnit : dictionary.getRawWikiUnits()) {
-            String text = rawWikiUnit.getText().trim();
+        for (SourceWikiUnit sourceWikiUnit : dictionary.getSourceWikiUnits()) {
+            String text = sourceWikiUnit.getText().trim();
 
             String[] separated = pattern.split(text);
             for (String s : separated) {
                 if (s.contains("{{język polski}}")) {
-                    rawWikiUnit.setText(s);
+                    sourceWikiUnit.setText(s);
                     break;
                 } else {
-                    rawWikiUnit.setText("");
+                    sourceWikiUnit.setText("");
                 }
             }
 
-            if (!rawWikiUnit.getText().contains(znaczenia) || StringUtils.isBlank(rawWikiUnit.getText())) {
-                empty.add(rawWikiUnit);
+            if (!sourceWikiUnit.getText().contains(znaczenia) || StringUtils.isBlank(sourceWikiUnit.getText())) {
+                empty.add(sourceWikiUnit);
             }
         }
 
         log.info("Number of empty raw units: {}", empty.size());
-        log.info("Number of units in dictionary: {}", dictionary.getRawWikiUnits().size());
-        dictionary.getRawWikiUnits().removeAll(empty);
-        log.info("Size after removing: {}", dictionary.getRawWikiUnits().size());
+        log.info("Number of units in dictionary: {}", dictionary.getSourceWikiUnits().size());
+        dictionary.getSourceWikiUnits().removeAll(empty);
+        log.info("Size after removing: {}", dictionary.getSourceWikiUnits().size());
     }
 
 

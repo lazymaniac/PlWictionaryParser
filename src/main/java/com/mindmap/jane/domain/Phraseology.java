@@ -1,7 +1,6 @@
 package com.mindmap.jane.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,13 +8,11 @@ import java.util.Objects;
 /**
  * A Phraseology.
  */
-@Document(collection = "phraseology")
 public class Phraseology implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
+    @Field("link")
     private Link link;
 
     public Phraseology(Link link) {
@@ -26,13 +23,6 @@ public class Phraseology implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Link getLink() {
         return link;
@@ -50,29 +40,22 @@ public class Phraseology implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Phraseology phraseology = (Phraseology) o;
-        if (phraseology.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), phraseology.getId());
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Phraseology that = (Phraseology) o;
+        return Objects.equals(link, that.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+
+        return Objects.hash(link);
     }
 
     @Override
     public String toString() {
         return "Phraseology{" +
-            "id=" + getId() +
-            ", link='" + getLink() + "'" +
-            "}";
+            "link=" + link +
+            '}';
     }
 }

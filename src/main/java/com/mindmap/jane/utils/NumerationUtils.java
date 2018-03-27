@@ -5,13 +5,13 @@ import java.util.regex.Pattern;
 
 /**
  * Numeration examples:
- *  - (1.1)
- *  - (1.1-3)
- *  - (1.1,3)
- *  - (1-3)
- *  - (1,3)
- *  - (1.1, 2.3)
- *  - (1-2, 3.3)
+ * - (1.1)
+ * - (1.1-3)
+ * - (1.1,3)
+ * - (1-3)
+ * - (1,3)
+ * - (1.1, 2.3)
+ * - (1-2, 3.3)
  */
 public class NumerationUtils {
 
@@ -36,7 +36,7 @@ public class NumerationUtils {
         return line.startsWith(numerationStartChar);
     }
 
-    public static String removeNumeration(String line) {
+    public static String removeNumerationReference(String line) {
         Matcher numerationMatcher = removeNumerationPattern.matcher(line);
         return numerationMatcher.replaceAll("").replaceAll(": ", "");
     }

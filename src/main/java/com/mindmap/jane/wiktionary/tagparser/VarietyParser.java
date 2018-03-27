@@ -2,9 +2,7 @@ package com.mindmap.jane.wiktionary.tagparser;
 
 import com.mindmap.jane.domain.*;
 import com.mindmap.jane.wiktionary.generators.AdverbVarGenerator;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
 import com.mindmap.jane.wiktionary.numeration.NumerationInterpreter;
-import com.mindmap.jane.utils.TemplateStrings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -15,8 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.mindmap.jane.utils.NumerationUtils.getNumeration;
-import static com.mindmap.jane.utils.TemplateStrings.END_OD_BLOCK;
-import static com.mindmap.jane.utils.TemplateStrings.ODMIANA_TAG;
 
 @Service
 public class VarietyParser {
@@ -29,6 +25,11 @@ public class VarietyParser {
     private final AdjectiveVarParser adjectiveVarParser;
     private final AdverbVarGenerator adverbVarParser;
     private final NumeralVarParser numeralVarParser;
+
+    private final String colon = ":";
+    private final String ODMIANA_TAG = "{{odmiana}}";
+    private final String END_OD_BLOCK = "}}";
+
 
     public VarietyParser(NumerationInterpreter numerationInterpreter, VerbVarParser verbVarParser, NounVarParser nounVarParser, AdjectiveVarParser adjectiveVarParser, AdverbVarGenerator adverbVarParser, NumeralVarParser numeralVarParser) {
         this.numerationInterpreter = numerationInterpreter;
@@ -66,7 +67,7 @@ public class VarietyParser {
                 continue; // if it's beginning or ending of "odmiana" tag - skip
             }
 
-            if (currentLine.startsWith(TemplateStrings.COLON)) { // only lines starting with colon contains variety type tag.
+            if (currentLine.startsWith(colon)) { // only lines starting with colon contains variety type tag.
                 for (PartOfSpeechTagEnum partOfSpeechTagEnum : PartOfSpeechTagEnum.values()) {
                     if (currentLine.contains(partOfSpeechTagEnum.value)) {
                         if (blockType == null) { // set type of first part of speech

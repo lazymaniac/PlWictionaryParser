@@ -1,11 +1,11 @@
 package com.mindmap.jane.wiktionary.tagparser;
 
 import com.mindmap.jane.domain.Collocation;
+import com.mindmap.jane.domain.Numeration;
 import com.mindmap.jane.domain.Sentence;
 import com.mindmap.jane.domain.WikiUnit;
 import com.mindmap.jane.utils.RegexConsts;
 import com.mindmap.jane.utils.SentenceParser;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
 import com.mindmap.jane.wiktionary.numeration.NumerationInterpreter;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.mindmap.jane.utils.NumerationUtils.getNumeration;
-import static com.mindmap.jane.utils.NumerationUtils.removeNumeration;
+import static com.mindmap.jane.utils.NumerationUtils.removeNumerationReference;
 
 /**
  * Szablon: {{kolokacje}}
@@ -61,7 +61,7 @@ public class CollocationsParser {
 
             try {
                 for (String collocation : currentLine.split("•")) {
-                    for (String collocationSentence : prepareForSentenceParser(wikiUnit.getName(), removeNumeration(collocation.trim()))) {
+                    for (String collocationSentence : prepareForSentenceParser(wikiUnit.getName(), removeNumerationReference(collocation.trim()))) {
                         Sentence sentence = SentenceParser.parseSentence(collocationSentence);
                         wikiUnit.addCollocation(numerations, new Collocation(sentence));
                     }

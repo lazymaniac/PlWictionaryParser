@@ -90,7 +90,7 @@ public enum PersonVarTypeEnum {
      */
     IMIES_PRZYM_BIERNY_N("I_PRZYM_BIERNY_N");
 
-    private PersonVarTypeEnum(String type) {
+    PersonVarTypeEnum(String type) {
         this.type = type;
     }
 

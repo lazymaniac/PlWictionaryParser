@@ -1,8 +1,6 @@
 package com.mindmap.jane.domain;
 
 import com.mindmap.jane.domain.enumeration.CasesFormQualifier;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -11,14 +9,11 @@ import java.util.Objects;
 /**
  * A CasesVar.
  */
-@Document(collection = "cases_var")
 public class CasesVar implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
-    @Field("casesType")
+    @Field("cases_type")
     private CasesFormQualifier casesType;
 
     @Field("mianownik")
@@ -42,16 +37,6 @@ public class CasesVar implements Serializable {
     @Field("wolacz")
     private String wolacz;
 
-    public CasesVar(String mianownik, String dopelniacz, String celownik, String biernik, String narzednik, String miejscownik, String wolacz) {
-        this.mianownik = mianownik;
-        this.dopelniacz = dopelniacz;
-        this.celownik = celownik;
-        this.biernik = biernik;
-        this.narzednik = narzednik;
-        this.miejscownik = miejscownik;
-        this.wolacz = wolacz;
-    }
-
     public CasesVar(CasesFormQualifier casesType) {
         this.casesType = casesType;
     }
@@ -60,13 +45,6 @@ public class CasesVar implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public CasesFormQualifier getCasesType() {
         return casesType;
@@ -176,37 +154,36 @@ public class CasesVar implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         CasesVar casesVar = (CasesVar) o;
-        if (casesVar.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, casesVar.id);
+        return casesType == casesVar.casesType &&
+            Objects.equals(mianownik, casesVar.mianownik) &&
+            Objects.equals(dopelniacz, casesVar.dopelniacz) &&
+            Objects.equals(celownik, casesVar.celownik) &&
+            Objects.equals(biernik, casesVar.biernik) &&
+            Objects.equals(narzednik, casesVar.narzednik) &&
+            Objects.equals(miejscownik, casesVar.miejscownik) &&
+            Objects.equals(wolacz, casesVar.wolacz);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+
+        return Objects.hash(casesType, mianownik, dopelniacz, celownik, biernik, narzednik, miejscownik, wolacz);
     }
 
     @Override
     public String toString() {
         return "CasesVar{" +
-            "id=" + getId() +
-            ", casesType='" + getCasesType() + "'" +
-            ", mianownik='" + mianownik + "'" +
-            ", dopelniacz='" + dopelniacz + "'" +
-            ", celownik='" + celownik + "'" +
-            ", biernik='" + biernik + "'" +
-            ", narzednik='" + narzednik + "'" +
-            ", miejscownik='" + miejscownik + "'" +
-            ", wolacz='" + wolacz + "'" +
+            "casesType=" + casesType +
+            ", mianownik='" + mianownik + '\'' +
+            ", dopelniacz='" + dopelniacz + '\'' +
+            ", celownik='" + celownik + '\'' +
+            ", biernik='" + biernik + '\'' +
+            ", narzednik='" + narzednik + '\'' +
+            ", miejscownik='" + miejscownik + '\'' +
+            ", wolacz='" + wolacz + '\'' +
             '}';
     }
-
 }

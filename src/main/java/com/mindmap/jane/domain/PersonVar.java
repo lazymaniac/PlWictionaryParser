@@ -1,7 +1,6 @@
 package com.mindmap.jane.domain;
 
 import com.mindmap.jane.domain.enumeration.PersonVarTypeEnum;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -15,8 +14,6 @@ import java.util.Objects;
 public class PersonVar implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
     @Field("var_type")
     private PersonVarTypeEnum varType;
@@ -57,13 +54,6 @@ public class PersonVar implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public PersonVarTypeEnum getVarType() {
         return varType;
@@ -159,35 +149,34 @@ public class PersonVar implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         PersonVar personVar = (PersonVar) o;
-        if (personVar.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), personVar.getId());
+        return varType == personVar.varType &&
+            Objects.equals(per1sing, personVar.per1sing) &&
+            Objects.equals(per2sing, personVar.per2sing) &&
+            Objects.equals(per3sing, personVar.per3sing) &&
+            Objects.equals(per1plur, personVar.per1plur) &&
+            Objects.equals(per2plur, personVar.per2plur) &&
+            Objects.equals(per3plur, personVar.per3plur);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+
+        return Objects.hash(varType, per1sing, per2sing, per3sing, per1plur, per2plur, per3plur);
     }
 
     @Override
     public String toString() {
         return "PersonVar{" +
-            "id=" + getId() +
-            ", varType='" + getVarType() + "'" +
-            ", per1sing='" + getPer1sing() + "'" +
-            ", per2sing='" + getPer2sing() + "'" +
-            ", per3sing='" + getPer3sing() + "'" +
-            ", per1plur='" + getPer1plur() + "'" +
-            ", per2plur='" + getPer2plur() + "'" +
-            ", per3plur='" + getPer3plur() + "'" +
-            "}";
+            "varType=" + varType +
+            ", per1sing='" + per1sing + '\'' +
+            ", per2sing='" + per2sing + '\'' +
+            ", per3sing='" + per3sing + '\'' +
+            ", per1plur='" + per1plur + '\'' +
+            ", per2plur='" + per2plur + '\'' +
+            ", per3plur='" + per3plur + '\'' +
+            '}';
     }
 }

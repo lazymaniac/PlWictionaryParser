@@ -1,6 +1,6 @@
 package com.mindmap.jane.wiktionary;
 
-import com.mindmap.jane.domain.RawWikiUnit;
+import com.mindmap.jane.domain.SourceWikiUnit;
 import com.mindmap.jane.wiktionary.dictionary.Dictionary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +21,10 @@ public class WikiParser extends DefaultHandler {
     private String xmlFile;
     private String tempValue;
     private StringBuilder strBuild;
-    private RawWikiUnit tempUnit;
+    private SourceWikiUnit tempUnit;
 
     private Dictionary dictionary;
-    private Set<RawWikiUnit> rawUnits;
+    private Set<SourceWikiUnit> rawUnits;
 
     int counter = 0;
     boolean isWikiUnit = true;
@@ -56,27 +56,23 @@ public class WikiParser extends DefaultHandler {
 
     @Override
     public final void startElement(final String uri, final String name,
-                                   final String elementName, final Attributes attr) throws SAXException {
+                                   final String elementName, final Attributes attr) {
         strBuild = new StringBuilder();
         if (elementName.equalsIgnoreCase("page")) {
-            tempUnit = new RawWikiUnit();
+            tempUnit = new SourceWikiUnit();
         }
     }
 
     @Override
     public final void endElement(final String uri, final String name,
-                                 final String element) throws SAXException {
+                                 final String element) {
 
         if (element.equals("title")) {
             tempUnit.setTitle(tempValue);
         }
 
         if (element.equals("ns")) {
-            if (tempValue.equals("0")) {
-                isWikiUnit = true;
-            } else {
-                isWikiUnit = false;
-            }
+            isWikiUnit = tempValue.equals("0");
         }
 
         if (element.equals("text")) {
@@ -93,14 +89,14 @@ public class WikiParser extends DefaultHandler {
     }
 
     @Override
-    public final void endDocument() throws SAXException {
-        dictionary.setRawWikiUnits(rawUnits);
+    public final void endDocument() {
+        dictionary.setSourceWikiUnits(rawUnits);
         log.debug("Found :" + rawUnits.size() + " units.");
         rawUnits = null;
     }
 
     @Override
-    public final void characters(final char[] ac, final int offset, final int count) throws SAXException {
+    public final void characters(final char[] ac, final int offset, final int count) {
         tempValue = new String(ac, offset, count);
         strBuild.append(tempValue);
     }
@@ -129,7 +125,7 @@ public class WikiParser extends DefaultHandler {
         }
 
         @Override
-        public void warning(final SAXParseException exception) throws SAXException {
+        public void warning(final SAXParseException exception) {
             log.warn("Warning: " + parseException(exception));
         }
 

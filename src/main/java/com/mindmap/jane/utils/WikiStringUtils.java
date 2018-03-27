@@ -1,7 +1,5 @@
 package com.mindmap.jane.utils;
 
-import org.apache.commons.lang.StringUtils;
-
 import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.apache.commons.lang.StringUtils.isEmpty;
 

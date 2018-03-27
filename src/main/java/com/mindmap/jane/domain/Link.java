@@ -1,19 +1,13 @@
 package com.mindmap.jane.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Document(collection = "link")
 public class Link implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    private String id;
 
     /**
      * Index in Sentence.
@@ -38,14 +32,6 @@ public class Link implements Serializable {
     }
 
     public Link() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Integer getIndex() {
@@ -92,22 +78,21 @@ public class Link implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Link link = (Link) o;
-        return Objects.equals(id, link.id) &&
-            Objects.equals(index, link.index) &&
+        return Objects.equals(index, link.index) &&
             Objects.equals(baseForm, link.baseForm) &&
             Objects.equals(usedForm, link.usedForm);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, index, baseForm, usedForm);
+
+        return Objects.hash(index, baseForm, usedForm);
     }
 
     @Override
     public String toString() {
         return "Link{" +
-            "id='" + id + '\'' +
-            ", index=" + index +
+            "index=" + index +
             ", baseForm='" + baseForm + '\'' +
             ", usedForm='" + usedForm + '\'' +
             '}';

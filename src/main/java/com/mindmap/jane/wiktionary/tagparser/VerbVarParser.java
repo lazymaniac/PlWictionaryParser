@@ -120,7 +120,6 @@ public class VerbVarParser {
         PersonVar czasPrzyszlyF = new PersonVar(PersonVarTypeEnum.CZAS_PRZYSZ_F);
         PersonVar czasPrzyszlyN = new PersonVar(PersonVarTypeEnum.CZAS_PRZYSZ_N);
         PersonVar trybRozkaz = new PersonVar(PersonVarTypeEnum.TRYB_ROZKAZ); // Tryb
-        // rozujący
         PersonVar trybPrzypM = new PersonVar(PersonVarTypeEnum.TRYB_PRZYP_M); // Tryb
         // przypuszczający
         PersonVar trybPrzypF = new PersonVar(PersonVarTypeEnum.TRYB_PRZYP_F);
@@ -385,15 +384,12 @@ public class VerbVarParser {
     }
 
     private boolean varNotEmpty(PersonVar var) {
-        if (var.getPer1plur() != null ||
+        return var.getPer1plur() != null ||
             var.getPer1sing() != null ||
             var.getPer2plur() != null ||
             var.getPer2sing() != null ||
             var.getPer3plur() != null ||
-            var.getPer3sing() != null)
-            return true;
-        else
-            return false;
+            var.getPer3sing() != null;
     }
 
 }

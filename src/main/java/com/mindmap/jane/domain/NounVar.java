@@ -1,8 +1,6 @@
 package com.mindmap.jane.domain;
 
 import com.mindmap.jane.domain.enumeration.GenderQualifier;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -13,12 +11,9 @@ import java.util.Objects;
 /**
  * A NounVar.
  */
-@Document(collection = "noun_var")
 public class NounVar implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
     @Field("topic")
     private String topic;
@@ -38,19 +33,13 @@ public class NounVar implements Serializable {
     @Field("no_plural")
     private Boolean noPlural;
 
+    @Field("cases_vars")
     private List<CasesVar> casesVars = new ArrayList<>();
 
     public NounVar() {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getTopic() {
         return topic;
@@ -153,8 +142,7 @@ public class NounVar implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NounVar nounVar = (NounVar) o;
-        return Objects.equals(id, nounVar.id) &&
-            Objects.equals(topic, nounVar.topic) &&
+        return Objects.equals(topic, nounVar.topic) &&
             gender == nounVar.gender &&
             secondGender == nounVar.secondGender &&
             Objects.equals(varietyAble, nounVar.varietyAble) &&
@@ -165,14 +153,14 @@ public class NounVar implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, topic, gender, secondGender, varietyAble, noSingular, noPlural, casesVars);
+
+        return Objects.hash(topic, gender, secondGender, varietyAble, noSingular, noPlural, casesVars);
     }
 
     @Override
     public String toString() {
         return "NounVar{" +
-            "id='" + id + '\'' +
-            ", topic='" + topic + '\'' +
+            "topic='" + topic + '\'' +
             ", gender=" + gender +
             ", secondGender=" + secondGender +
             ", varietyAble=" + varietyAble +

@@ -24,7 +24,7 @@ public class WikiParserUnitTest {
     public void testUnitTest() {
         wikiParser.parseDocument();
 
-        assertFalse(dictionary.getRawWikiUnits().isEmpty());
+        assertFalse(dictionary.getSourceWikiUnits().isEmpty());
     }
 
 

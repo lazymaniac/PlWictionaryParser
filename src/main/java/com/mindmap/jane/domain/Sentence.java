@@ -1,22 +1,19 @@
 package com.mindmap.jane.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-@Document(collection = "sentence")
 public class Sentence implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    private String id;
-
+    @Field("original_form")
     private String originalForm;
 
+    @Field("links")
     private List<Link> links;
 
     public Sentence() {
@@ -28,14 +25,6 @@ public class Sentence implements Serializable {
 
     public Sentence(List<Link> links) {
         this.links = links;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getOriginalForm() {
@@ -64,21 +53,20 @@ public class Sentence implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sentence sentence = (Sentence) o;
-        return Objects.equals(id, sentence.id) &&
-            Objects.equals(originalForm, sentence.originalForm) &&
+        return Objects.equals(originalForm, sentence.originalForm) &&
             Objects.equals(links, sentence.links);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, originalForm, links);
+
+        return Objects.hash(originalForm, links);
     }
 
     @Override
     public String toString() {
         return "Sentence{" +
-            "id='" + id + '\'' +
-            ", originalForm='" + originalForm + '\'' +
+            "originalForm='" + originalForm + '\'' +
             ", links=" + links +
             '}';
     }

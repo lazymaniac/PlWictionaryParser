@@ -1,12 +1,12 @@
 package com.mindmap.jane.wiktionary.tagparser;
 
 import com.mindmap.jane.domain.Meaning;
+import com.mindmap.jane.domain.Numeration;
 import com.mindmap.jane.domain.Sentence;
 import com.mindmap.jane.domain.WikiUnit;
 import com.mindmap.jane.utils.NumerationUtils;
 import com.mindmap.jane.utils.SentenceParser;
 import com.mindmap.jane.utils.WikiStringUtils;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
 import com.mindmap.jane.wiktionary.numeration.NumerationInterpreter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 import static com.mindmap.jane.utils.NumerationUtils.isNumerationLine;
 import static com.mindmap.jane.utils.RegexConsts.ALPHABET;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
 /**
  * {{znaczenia}}
@@ -132,7 +132,7 @@ public class MeaningParser {
     }
 
     private String removeNumerationAndQualifiers(String currentLine) {
-        String removedNumeration = NumerationUtils.removeNumeration(currentLine);
+        String removedNumeration = NumerationUtils.removeNumerationReference(currentLine);
         Matcher qualifierMatcher = qualifierPattern.matcher(removedNumeration);
         return qualifierMatcher.replaceAll("");
     }

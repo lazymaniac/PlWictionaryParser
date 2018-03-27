@@ -1,8 +1,7 @@
 package com.mindmap.jane.domain;
 
-import com.mindmap.jane.wiktionary.numeration.Numeration;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,47 +11,60 @@ import java.util.Objects;
 /**
  * A Meaning.
  */
-@Document(collection = "meaning")
 public class Meaning implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    private String id;
-
+    @Transient
     private Numeration numeration;
 
+    @Field("part_of_speech_qualifiers")
     private List<String> partOfSpeechQualifiers = new ArrayList<>();
 
+    @Field("meaning_qualifiers")
     private List<String> meaningQualifiers = new ArrayList<>();
 
     // true if {{wikipedia}} tag is present in the end of meaning
+    @Field("has_link_to_wikipedia")
     private Boolean hasLinkToWikipedia;
 
+    @Field("sentence")
     private Sentence sentence;
 
+    @Field("synonyms")
     private List<Synonym> synonyms = new ArrayList<>();
 
+    @Field("examples")
     private List<Example> examples = new ArrayList<>();
 
+    @Field("antonyms")
     private List<Antonym> antonyms = new ArrayList<>();
 
+    @Field("phraseology")
     private List<Phraseology> phraseology = new ArrayList<>();
 
+    @Field("collocations")
     private List<Collocation> collocations = new ArrayList<>();
 
+    @Field("cognates")
     private List<Cognate> cognates = new ArrayList<>();
 
+    @Field("noun_vars")
     private List<NounVar> nounVars = new ArrayList<>();
 
+    @Field("adjective_vars")
     private List<AdjectiveVar> adjectiveVars = new ArrayList<>();
 
+    @Field("adverb_vars")
     private List<AdverbVar> adverbVars = new ArrayList<>();
 
+    @Field("verb_vars")
     private List<VerbVar> verbVars = new ArrayList<>();
 
+    @Field("pronoun_vars")
     private List<PronounVar> pronounVars = new ArrayList<>();
 
+    @Field("numeral_vars")
     private List<NumeralVar> numeralVars = new ArrayList<>();
 
     public Meaning(Numeration numeration, Sentence sentence) {
@@ -64,13 +76,6 @@ public class Meaning implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Numeration getNumeration() {
         return numeration;
@@ -277,8 +282,7 @@ public class Meaning implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Meaning meaning = (Meaning) o;
-        return Objects.equals(id, meaning.id) &&
-            Objects.equals(sentence, meaning.sentence) &&
+        return Objects.equals(sentence, meaning.sentence) &&
             Objects.equals(synonyms, meaning.synonyms) &&
             Objects.equals(examples, meaning.examples) &&
             Objects.equals(antonyms, meaning.antonyms) &&
@@ -295,14 +299,13 @@ public class Meaning implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, sentence, synonyms, examples, antonyms, phraseology, collocations, cognates, nounVars, adjectiveVars, adverbVars, verbVars, pronounVars, numeralVars);
+        return Objects.hash(sentence, synonyms, examples, antonyms, phraseology, collocations, cognates, nounVars, adjectiveVars, adverbVars, verbVars, pronounVars, numeralVars);
     }
 
     @Override
     public String toString() {
         return "Meaning{" +
-            "id='" + id + '\'' +
-            ", sentence=" + sentence +
+            "sentence=" + sentence +
             ", synonyms=" + synonyms +
             ", examples=" + examples +
             ", antonyms=" + antonyms +

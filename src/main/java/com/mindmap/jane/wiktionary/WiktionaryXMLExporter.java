@@ -1,6 +1,6 @@
 package com.mindmap.jane.wiktionary;
 
-import com.mindmap.jane.domain.RawWikiUnit;
+import com.mindmap.jane.domain.SourceWikiUnit;
 import com.mindmap.jane.wiktionary.dictionary.Dictionary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,13 +40,13 @@ public class WiktionaryXMLExporter {
 
         outStream.println("<?xml version=\"1.0\"?>\n<wiki>");
 
-        for (RawWikiUnit rawWikiUnit : dictionary.getRawWikiUnits()) {
-            if (rawWikiUnit.getTitle().contains(":"))
+        for (SourceWikiUnit sourceWikiUnit : dictionary.getSourceWikiUnits()) {
+            if (sourceWikiUnit.getTitle().contains(":"))
                 continue;
             outStream.print("<page>\n");
-            outStream.print("<title>" + rawWikiUnit.getTitle() + "</title>\n");
+            outStream.print("<title>" + sourceWikiUnit.getTitle() + "</title>\n");
             outStream.print("<text>\n");
-            outStream.print(rawWikiUnit.getText() + "\n");
+            outStream.print(sourceWikiUnit.getText() + "\n");
             outStream.print("</text>\n");
             outStream.print("</page>\n\n");
         }
@@ -54,7 +54,7 @@ public class WiktionaryXMLExporter {
         outStream.println("</wiki>");
         outStream.close();
 
-        LOG.info("Saved: " + dictionary.getRawWikiUnits().size() + "raw units");
+        LOG.info("Saved: " + dictionary.getSourceWikiUnits().size() + "raw units");
     }
 
     private PrintWriter openOutputStream(final String fileName) {

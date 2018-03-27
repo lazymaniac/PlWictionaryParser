@@ -48,7 +48,7 @@ public class NumerationUtilsUnitTest {
         String testInput = ": (1-2) {{test,asd}}";
 
         // WHEN
-        String result = NumerationUtils.removeNumeration(testInput);
+        String result = NumerationUtils.removeNumerationReference(testInput);
 
         // THEN
         assertEquals("{{test,asd}}", result);

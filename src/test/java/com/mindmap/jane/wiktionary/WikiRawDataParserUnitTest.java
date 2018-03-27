@@ -31,7 +31,7 @@ public class WikiRawDataParserUnitTest {
 
         wikiRawDataParser.parseRawUnits(dictionary);
 
-        assertFalse(dictionary.getRawWikiUnits().isEmpty());
+        assertFalse(dictionary.getSourceWikiUnits().isEmpty());
     }
 
 }

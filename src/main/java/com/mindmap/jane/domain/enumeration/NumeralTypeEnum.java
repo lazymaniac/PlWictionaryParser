@@ -30,7 +30,7 @@ public enum NumeralTypeEnum {
     MULTIPLE("wielokrotny"),
     MULTIWORD("wielowyrazowy");
 
-    private NumeralTypeEnum(String text) {
+    NumeralTypeEnum(String text) {
         this.type = text;
     }
 

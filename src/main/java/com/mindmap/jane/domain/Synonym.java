@@ -1,7 +1,6 @@
 package com.mindmap.jane.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -10,10 +9,10 @@ import java.util.Objects;
 /**
  * A Synonym.
  */
-@Document(collection = "synonym")
 public class Synonym implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     private String id;
 
@@ -50,31 +49,27 @@ public class Synonym implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Synonym synonym = (Synonym) o;
-        if (synonym.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), synonym.getId());
+        return Objects.equals(id, synonym.id) &&
+            Objects.equals(link, synonym.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+
+        return Objects.hash(id, link);
     }
 
     @Override
     public String toString() {
         return "Synonym{" +
-            "id=" + getId() +
-            ", link='" + getLink() + "'" +
-            "}";
+            "id='" + id + '\'' +
+            ", link=" + link +
+            '}';
     }
 }

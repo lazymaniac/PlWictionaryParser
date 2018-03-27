@@ -3,7 +3,7 @@ package com.mindmap.jane.wiktionary.tagparser;
 import com.mindmap.jane.domain.*;
 import com.mindmap.jane.domain.enumeration.CognateNounTypesQualifier;
 import com.mindmap.jane.domain.enumeration.CognatePartOfSpeechQualifier;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
+import com.mindmap.jane.domain.Numeration;
 import org.junit.Test;
 
 import java.util.ArrayList;

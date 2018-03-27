@@ -15,7 +15,7 @@ public enum NumberQualifier {
      */
     PLURAL("lm");
 
-    private NumberQualifier(String type) {
+    NumberQualifier(String type) {
         this.type = type;
     }
 

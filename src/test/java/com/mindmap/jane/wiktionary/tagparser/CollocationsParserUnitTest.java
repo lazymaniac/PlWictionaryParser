@@ -3,7 +3,7 @@ package com.mindmap.jane.wiktionary.tagparser;
 import com.mindmap.jane.domain.Collocation;
 import com.mindmap.jane.domain.WikiUnit;
 import com.mindmap.jane.testutils.WikiUnitUtils;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
+import com.mindmap.jane.domain.Numeration;
 import com.mindmap.jane.wiktionary.numeration.NumerationInterpreter;
 import org.junit.Test;
 

@@ -1,7 +1,5 @@
 package com.mindmap.jane.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -10,12 +8,9 @@ import java.util.Objects;
 /**
  * A Antonym. Template {{antonimy}}
  */
-@Document(collection = "antonym")
 public class Antonym implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
     @Field("link")
     private Link link;
@@ -28,13 +23,6 @@ public class Antonym implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Link getLink() {
         return link;
@@ -54,29 +42,22 @@ public class Antonym implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Antonym antonym = (Antonym) o;
-        if (antonym.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, antonym.id);
+        return Objects.equals(link, antonym.link);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+
+        return Objects.hash(link);
     }
 
     @Override
     public String toString() {
         return "Antonym{" +
-            "id=" + id +
-            ", value='" + link + "'" +
+            "link=" + link +
             '}';
     }
 }

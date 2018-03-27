@@ -4,7 +4,7 @@ import com.mindmap.jane.domain.Link;
 import com.mindmap.jane.domain.Meaning;
 import com.mindmap.jane.domain.Sentence;
 import com.mindmap.jane.domain.WikiUnit;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
+import com.mindmap.jane.domain.Numeration;
 
 import java.util.Collections;
 

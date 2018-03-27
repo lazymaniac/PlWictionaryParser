@@ -1,7 +1,6 @@
 package com.mindmap.jane.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,13 +8,11 @@ import java.util.Objects;
 /**
  * A Collocation. Template {{kolokacje}}
  */
-@Document(collection = "collocation")
 public class Collocation implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
+    @Field("sentence")
     private Sentence sentence;
 
     public Collocation(Sentence sentence) {
@@ -25,15 +22,7 @@ public class Collocation implements Serializable {
     public Collocation() {
     }
 
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Sentence getSentence() {
         return sentence;
@@ -50,31 +39,25 @@ public class Collocation implements Serializable {
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Collocation collocation = (Collocation) o;
-        if (collocation.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), collocation.getId());
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Collocation that = (Collocation) o;
+        return Objects.equals(sentence, that.sentence);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+
+        return Objects.hash(sentence);
     }
 
     @Override
     public String toString() {
         return "Collocation{" +
-            "id=" + getId() +
-            ", sentence='" + getSentence() + "'" +
-            "}";
+            "sentence=" + sentence +
+            '}';
     }
 }

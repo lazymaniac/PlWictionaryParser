@@ -2,8 +2,6 @@ package com.mindmap.jane.domain;
 
 import com.mindmap.jane.wiktionary.generators.form.ConjugationGenerator;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -14,12 +12,9 @@ import java.util.Objects;
 /**
  * A VerbVar.
  */
-@Document(collection = "verb_var")
 public class VerbVar implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
     @Field("is_perfective")
     private Boolean isPerfective;
@@ -45,7 +40,7 @@ public class VerbVar implements Serializable {
     @Field("infinitive")
     private String infinitive;
 
-    @Field("impersonal_from_past")
+    @Field("impersonal_form_past")
     private String impersonalFormPast;
 
     @Field("adverbial_participle_contemporary")
@@ -57,6 +52,7 @@ public class VerbVar implements Serializable {
     @Field("gerund")
     private String gerund;
 
+    @Field("person_vars")
     private List<PersonVar> personVars = new ArrayList<>();
 
     // TODO move to other class
@@ -69,13 +65,6 @@ public class VerbVar implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Boolean isIsPerfective() {
         return isPerfective;
@@ -253,29 +242,34 @@ public class VerbVar implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         VerbVar verbVar = (VerbVar) o;
-        if (verbVar.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), verbVar.getId());
+        return Objects.equals(isPerfective, verbVar.isPerfective) &&
+            Objects.equals(isReflexivVerb, verbVar.isReflexivVerb) &&
+            Objects.equals(topic, verbVar.topic) &&
+            Objects.equals(conjugation, verbVar.conjugation) &&
+            Objects.equals(reflexivPronoun, verbVar.reflexivPronoun) &&
+            Objects.equals(perfective, verbVar.perfective) &&
+            Objects.equals(imperfective, verbVar.imperfective) &&
+            Objects.equals(infinitive, verbVar.infinitive) &&
+            Objects.equals(impersonalFormPast, verbVar.impersonalFormPast) &&
+            Objects.equals(adverbialParticipleContemporary, verbVar.adverbialParticipleContemporary) &&
+            Objects.equals(adverbialParticiplePrior, verbVar.adverbialParticiplePrior) &&
+            Objects.equals(gerund, verbVar.gerund) &&
+            Objects.equals(personVars, verbVar.personVars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(getId());
+
+        return Objects.hash(isPerfective, isReflexivVerb, topic, conjugation, reflexivPronoun, perfective, imperfective, infinitive, impersonalFormPast, adverbialParticipleContemporary, adverbialParticiplePrior, gerund, personVars);
     }
 
     @Override
     public String toString() {
         return "VerbVar{" +
-            "id='" + id + '\'' +
-            ", isPerfective=" + isPerfective +
+            "isPerfective=" + isPerfective +
             ", isReflexivVerb=" + isReflexivVerb +
             ", topic='" + topic + '\'' +
             ", conjugation='" + conjugation + '\'' +

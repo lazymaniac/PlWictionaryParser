@@ -19,7 +19,7 @@ public enum CasesFormQualifier {
 
     ADJ_PLUR_N("PRZYM_LM_N");
 
-    private CasesFormQualifier(String type) {
+    CasesFormQualifier(String type) {
         this.type = type;
     }
 

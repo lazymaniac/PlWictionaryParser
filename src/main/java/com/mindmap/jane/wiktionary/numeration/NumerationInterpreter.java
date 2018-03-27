@@ -2,6 +2,7 @@ package com.mindmap.jane.wiktionary.numeration;
 
 
 import com.mindmap.jane.domain.Meaning;
+import com.mindmap.jane.domain.Numeration;
 import com.mindmap.jane.domain.WikiUnit;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

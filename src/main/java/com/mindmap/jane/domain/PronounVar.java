@@ -1,7 +1,6 @@
 package com.mindmap.jane.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,27 +8,17 @@ import java.util.Objects;
 /**
  * A PronounVar.
  */
-@Document(collection = "pronoun_var")
 public class PronounVar implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
+    @Field("cases_var")
     private CasesVar casesVar;
 
     public PronounVar() {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     public PronounVar casesVar(CasesVar casesVar) {
         this.casesVar = casesVar;
@@ -44,24 +33,26 @@ public class PronounVar implements Serializable {
         this.casesVar = casesVar;
     }
 
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PronounVar that = (PronounVar) o;
-        return Objects.equals(id, that.id);
+        return Objects.equals(casesVar, that.casesVar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, casesVar);
+
+        return Objects.hash(casesVar);
     }
 
     @Override
     public String toString() {
         return "PronounVar{" +
-            "id='" + id + '\'' +
-            ", casesVar=" + casesVar +
+            "casesVar=" + casesVar +
             '}';
     }
 }

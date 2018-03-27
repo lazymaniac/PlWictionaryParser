@@ -3,7 +3,7 @@ import com.mindmap.jane.domain.Link;
 import com.mindmap.jane.domain.Phraseology;
 import com.mindmap.jane.domain.WikiUnit;
 import com.mindmap.jane.testutils.WikiUnitUtils;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
+import com.mindmap.jane.domain.Numeration;
 import com.mindmap.jane.wiktionary.numeration.NumerationInterpreter;
 import org.junit.Test;
 

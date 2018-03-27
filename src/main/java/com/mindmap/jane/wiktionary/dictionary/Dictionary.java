@@ -13,19 +13,19 @@ import java.util.Set;
  */
 public class Dictionary {
 
-    private Set<RawWikiUnit> rawWikiUnits = new HashSet<>();
+    private Set<SourceWikiUnit> sourceWikiUnits = new HashSet<>();
 
     private Set<WikiUnit> wikiUnits = new HashSet<>();
 
 	public Dictionary() {
 	}
 
-    public final Set<RawWikiUnit> getRawWikiUnits() {
-        return rawWikiUnits;
+    public final Set<SourceWikiUnit> getSourceWikiUnits() {
+        return sourceWikiUnits;
     }
 
-    public final void setRawWikiUnits(final Set<RawWikiUnit> rawUnits) {
-        this.rawWikiUnits = rawUnits;
+    public final void setSourceWikiUnits(final Set<SourceWikiUnit> rawUnits) {
+        this.sourceWikiUnits = rawUnits;
     }
 
     public final Set<WikiUnit> getWikiUnits() {
@@ -41,19 +41,19 @@ public class Dictionary {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dictionary that = (Dictionary) o;
-        return Objects.equals(rawWikiUnits, that.rawWikiUnits) &&
+        return Objects.equals(sourceWikiUnits, that.sourceWikiUnits) &&
             Objects.equals(wikiUnits, that.wikiUnits);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(rawWikiUnits, wikiUnits);
+        return Objects.hash(sourceWikiUnits, wikiUnits);
     }
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Dictionary{");
-        sb.append("rawWikiUnits=").append(rawWikiUnits);
+        sb.append("sourceWikiUnits=").append(sourceWikiUnits);
         sb.append(", wikiUnits=").append(wikiUnits);
         sb.append('}');
         return sb.toString();

@@ -1,25 +1,18 @@
 package com.mindmap.jane.domain;
 
 import com.mindmap.jane.domain.enumeration.NumeralTypeEnum;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 public class NumeralVar implements Serializable {
 
-    private String id;
-
+    @Field("numeral_type")
     private NumeralTypeEnum numeralType;
 
-    private CasesVar variety;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    @Field("cases_var")
+    private CasesVar casesVar;
 
     public NumeralTypeEnum getNumeralType() {
         return numeralType;
@@ -29,12 +22,12 @@ public class NumeralVar implements Serializable {
         this.numeralType = numeralType;
     }
 
-    public CasesVar getVariety() {
-        return variety;
+    public CasesVar getCasesVar() {
+        return casesVar;
     }
 
-    public void setVariety(CasesVar variety) {
-        this.variety = variety;
+    public void setCasesVar(CasesVar casesVar) {
+        this.casesVar = casesVar;
     }
 
     @Override
@@ -42,21 +35,21 @@ public class NumeralVar implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NumeralVar that = (NumeralVar) o;
-        return Objects.equals(id, that.id) &&
-            numeralType == that.numeralType &&
-            Objects.equals(variety, that.variety);
+        return numeralType == that.numeralType &&
+            Objects.equals(casesVar, that.casesVar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, numeralType);
+
+        return Objects.hash(numeralType, casesVar);
     }
 
     @Override
     public String toString() {
         return "NumeralVar{" +
-            "id='" + id + '\'' +
-            ", numeralType=" + numeralType +
+            "numeralType=" + numeralType +
+            ", casesVar=" + casesVar +
             '}';
     }
 }

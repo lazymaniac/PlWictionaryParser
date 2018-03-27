@@ -1,7 +1,7 @@
 package com.mindmap.jane.wiktionary;
 
 import com.codahale.metrics.annotation.Timed;
-import com.mindmap.jane.domain.RawWikiUnit;
+import com.mindmap.jane.domain.SourceWikiUnit;
 import com.mindmap.jane.domain.WikiUnit;
 import com.mindmap.jane.wiktionary.dictionary.Dictionary;
 import com.mindmap.jane.wiktionary.tagparser.*;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-import static com.mindmap.jane.utils.TemplateStrings.BEGIN_BLOCK;
 import static com.mindmap.jane.wiktionary.WikiRawDataParser.RawUnitTagTypeEnum.*;
 
 @Service
@@ -29,6 +28,7 @@ public class WikiRawDataParser {
     private final CognatesParser cognatesParser;
     private final PhraseologyParser phraseologyParser;
 
+    private final String BEGIN_BLOCK = "{{";
 
     public WikiRawDataParser(MeaningParser meaningParser, VarietyParser varietyParser, ExamplesParser examplesParser,
                              CollocationsParser collocationsParser, SynonymParser synonymParser, AntonymsParser antonymsParser,
@@ -45,18 +45,18 @@ public class WikiRawDataParser {
 
     @Timed
     public void parseRawUnits(Dictionary dictionary) {
-        log.info("RawUnits size: " + dictionary.getRawWikiUnits().size());
+        log.info("RawUnits size: " + dictionary.getSourceWikiUnits().size());
         Set<WikiUnit> wikiUnits = new HashSet<>();
 
-        for (RawWikiUnit rawWikiUnit : dictionary.getRawWikiUnits()) {
-            if (StringUtils.isBlank(rawWikiUnit.getText())) {
+        for (SourceWikiUnit sourceWikiUnit : dictionary.getSourceWikiUnits()) {
+            if (StringUtils.isBlank(sourceWikiUnit.getText())) {
                 continue;
             }
 
             WikiUnit wikiUnit = new WikiUnit();
-            wikiUnit.setName(rawWikiUnit.getTitle());
+            wikiUnit.setName(sourceWikiUnit.getTitle());
 
-            Map<RawUnitTagTypeEnum, List<String>> indexesOfBlocks = findIndexesOfBlocks(rawWikiUnit.getText());
+            Map<RawUnitTagTypeEnum, List<String>> indexesOfBlocks = findIndexesOfBlocks(sourceWikiUnit.getText());
             parseBlocks(wikiUnit, indexesOfBlocks);
 
             wikiUnits.add(wikiUnit);

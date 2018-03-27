@@ -1,7 +1,6 @@
 package com.mindmap.jane.domain;
 
 import com.mindmap.jane.domain.enumeration.CognatePartOfSpeechQualifier;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -35,6 +34,7 @@ public class WikiUnit implements Serializable {
     @Indexed
     private String topic;
 
+    @Field("meanings")
     private List<Meaning> meanings = new ArrayList<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

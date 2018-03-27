@@ -2,8 +2,6 @@ package com.mindmap.jane.domain;
 
 import com.mindmap.jane.domain.enumeration.CognateNounTypesQualifier;
 import com.mindmap.jane.domain.enumeration.CognatePartOfSpeechQualifier;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -13,22 +11,21 @@ import java.util.Objects;
 /**
  * A Cognate. Template: {{pokrewne}}
  */
-@Document(collection = "cognate")
 public class Cognate implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
     @Field("link")
     private Link link;
 
+    @Field("cognate_qualifiers")
     private List<String> cognateQualifiers;
 
     // If cognate is noun then information about type should be provided.
     @Field("gender_qualifier")
     private CognateNounTypesQualifier nounTypesQualifier;
 
+    @Field("part_of_speech_qualifier")
     private CognatePartOfSpeechQualifier partOfSpeechQualifier;
 
     public Cognate(Link link, CognateNounTypesQualifier nounTypesQualifier, CognatePartOfSpeechQualifier partOfSpeechQualifier, List<String> cognateQualifiers) {
@@ -46,13 +43,6 @@ public class Cognate implements Serializable {
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Link getLink() {
         return link;
@@ -100,29 +90,25 @@ public class Cognate implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Cognate cognate = (Cognate) o;
-        if (cognate.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, cognate.id);
+        return Objects.equals(link, cognate.link) &&
+            Objects.equals(cognateQualifiers, cognate.cognateQualifiers) &&
+            nounTypesQualifier == cognate.nounTypesQualifier &&
+            partOfSpeechQualifier == cognate.partOfSpeechQualifier;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+
+        return Objects.hash(link, cognateQualifiers, nounTypesQualifier, partOfSpeechQualifier);
     }
 
     @Override
     public String toString() {
         return "Cognate{" +
-            "id='" + id + '\'' +
-            ", link=" + link +
+            "link=" + link +
             ", cognateQualifiers=" + cognateQualifiers +
             ", nounTypesQualifier=" + nounTypesQualifier +
             ", partOfSpeechQualifier=" + partOfSpeechQualifier +

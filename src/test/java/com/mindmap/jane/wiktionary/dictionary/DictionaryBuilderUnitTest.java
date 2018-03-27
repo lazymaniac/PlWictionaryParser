@@ -18,6 +18,6 @@ public class DictionaryBuilderUnitTest {
         Dictionary dictionary = dictionaryBuilder.buildDictionary();
 
         // THEN
-        assertEquals("Should has 5 units", 5L, dictionary.getRawWikiUnits().size());
+        assertEquals("Should has 5 units", 5L, dictionary.getSourceWikiUnits().size());
     }
 }

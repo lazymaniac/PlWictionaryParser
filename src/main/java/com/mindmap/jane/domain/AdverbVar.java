@@ -1,7 +1,5 @@
 package com.mindmap.jane.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.io.Serializable;
@@ -10,20 +8,17 @@ import java.util.Objects;
 /**
  * A AdverbVar.
  */
-@Document(collection = "adverb_var")
 public class AdverbVar implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    private String id;
 
     @Field("value")
     private String value;
 
-    @Field("higherDegree")
+    @Field("higher_degree")
     private String higherDegree;
 
-    @Field("highestDegree")
+    @Field("highest_degree")
     private String highestDegree;
 
     public AdverbVar(String value, String higherDegree, String highestDegree) {
@@ -35,14 +30,6 @@ public class AdverbVar implements Serializable {
     public AdverbVar() {
     }
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getValue() {
         return value;
@@ -84,33 +71,29 @@ public class AdverbVar implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         AdverbVar adverbVar = (AdverbVar) o;
-        if (adverbVar.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, adverbVar.id);
+        return Objects.equals(value, adverbVar.value) &&
+            Objects.equals(higherDegree, adverbVar.higherDegree) &&
+            Objects.equals(highestDegree, adverbVar.highestDegree);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+
+        return Objects.hash(value, higherDegree, highestDegree);
     }
 
     @Override
     public String toString() {
         return "AdverbVar{" +
-            "id=" + getId() +
-            ", value='" + getValue() + "'" +
-            ", higherDegree='" + getHigherDegree() + "'" +
-            ", highestDegree='" + getHighestDegree() + "'" +
+            "value='" + value + '\'' +
+            ", higherDegree='" + higherDegree + '\'' +
+            ", highestDegree='" + highestDegree + '\'' +
             '}';
     }
 }

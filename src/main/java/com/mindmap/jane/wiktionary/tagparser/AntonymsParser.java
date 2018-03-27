@@ -4,7 +4,7 @@ import com.mindmap.jane.domain.Antonym;
 import com.mindmap.jane.domain.Link;
 import com.mindmap.jane.domain.WikiUnit;
 import com.mindmap.jane.utils.LinkParser;
-import com.mindmap.jane.wiktionary.numeration.Numeration;
+import com.mindmap.jane.domain.Numeration;
 import com.mindmap.jane.wiktionary.numeration.NumerationInterpreter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

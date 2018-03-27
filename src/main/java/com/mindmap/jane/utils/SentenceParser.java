@@ -20,11 +20,11 @@ import java.util.List;
 public class SentenceParser {
 
     public static Sentence parseSentence(String input) {
-        Sentence result = new Sentence();
         if (StringUtils.isBlank(input)) {
             return null;
         }
 
+        Sentence result = new Sentence();
         List<Link> links = LinkParser.parseLinks(input, true);
         result.setLinks(links);
         result.setOriginalForm(input);
