@@ -1,4 +1,4 @@
-# PlWordnetParser
+# PlWctionaryParser
 The purpose of this application it to convert document oriented Wictionary lemma into structural json and save into MongoDB for easier interpretation and processing.
 
 This application was generated using JHipster 4.14.0, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.0](http://www.jhipster.tech/documentation-archive/v4.14.0).
